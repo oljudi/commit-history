@@ -11,26 +11,20 @@ const octokit = new Octokit({
 
 @Injectable()
 export class GithubService {
-  async getCommitHistory(type: string): Promise<any> {
-    const repo = {
-      frontend: process.env.GITHUB_REPO_FRONTEND,
-      backend: process.env.GITHUB_REPO_BACKEND,
-    };
+  async getCommitHistory(): Promise<any> {
     try {
-      if (repo[type]) {
-        const { data: commitsData } = await octokit.request(
-          'GET /repos/{owner}/{repo}/commits',
-          {
-            owner: process.env.GITHUB_OWNER,
-            repo: repo[type],
-            headers: {
-              'X-GitHub-Api-Version': '2022-11-28',
-            },
+      const { data: commitsData } = await octokit.request(
+        'GET /repos/{owner}/{repo}/commits',
+        {
+          owner: process.env.GITHUB_OWNER,
+          repo: process.env.GITHUB_REPO,
+          headers: {
+            'X-GitHub-Api-Version': '2022-11-28',
           },
-        );
-        if (commitsData && commitsData.length > 0) {
-          return commitsData;
-        }
+        },
+      );
+      if (commitsData && commitsData.length > 0) {
+        return commitsData;
       }
       throw new HttpException('Bad request!', HttpStatus.BAD_REQUEST);
     } catch (error) {
