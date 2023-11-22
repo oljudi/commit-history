@@ -1,7 +1,6 @@
 # compiled output
-*/dist
-*/node_modules
-.vite/
+/dist
+/node_modules
 
 # Logs
 logs
@@ -16,7 +15,7 @@ lerna-debug.log*
 .DS_Store
 
 # Tests
-*/coverage
+/coverage
 /.nyc_output
 
 # IDEs and editors
@@ -35,4 +34,4 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-*/.env
+.env
