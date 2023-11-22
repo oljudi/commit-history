@@ -21,4 +21,8 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect('Hello World!');
   });
+
+  it('/github/commits (GET)', () => {
+    return request(app.getHttpServer()).get('/github/commits').expect(200);
+  });
 });
