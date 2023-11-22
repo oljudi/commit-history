@@ -41,11 +41,15 @@ const Home = () => {
         </Code>
       </Container>
       <Container maxWidth="80%" maxHeight={700} overflow="auto" padding={10}>
-        <VStack spacing={4} align="stretch">
-          {commits.map((commit, i) => (
-            <Commit key={i} commit={commit} />
-          ))}
-        </VStack>
+        {commits.length > 0 ? 
+          <VStack spacing={4} align="stretch">
+            {commits.map((commit, i) => (
+              <Commit key={i} commit={commit} />
+            ))}
+          </VStack>
+        : 
+          'Ups👾👾, something went wrong!!'  
+        }
       </Container>
     </Flex>
   );
